@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Products</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-grid>
+    @if (products().length!==0) {
+    <ion-row>
+      @for (product of products(); track $index) {
+      <ion-col size="12" sizeLg="4" sizeMd="6" sizeXl="3">
+        <app-product-card
+          [productData]="product"
+          (click)="handleModalClick(product.id)"
+        ></app-product-card>
+      </ion-col>
+      }
+    </ion-row>
+    } @else {
+    <ion-text>There are no existing products!!!!</ion-text>
+    }
+  </ion-grid>
+  <ion-modal [isOpen]="isModalOpen()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Product Detail</ion-title>
+          <ion-button fill="none" slot="start" (click)="handleCloseModal()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+            Back</ion-button
+          >
+        </ion-toolbar>
+      </ion-header>
+      <app-product-modal
+        [productId]="currentProductModalId"
+      ></app-product-modal>
+    </ng-template>
+  </ion-modal>
+</ion-content>

@@ -12,7 +12,7 @@ export class ProductsPage {
   productService = inject(ProductService);
   products = signal<ProductInterface[]>([]);
   isModalOpen = signal<boolean>(false);
-  currentProductModalId!: number;
+  currentProductModalId = signal<number>(0);
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe({
@@ -23,7 +23,8 @@ export class ProductsPage {
   }
 
   handleModalClick(productData: number) {
-    this.currentProductModalId = productData;
+    this.currentProductModalId.set(productData);
+    console.log(this.currentProductModalId());
     this.isModalOpen.set(true);
   }
 

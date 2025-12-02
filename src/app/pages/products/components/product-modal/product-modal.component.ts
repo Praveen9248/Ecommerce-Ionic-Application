@@ -13,8 +13,9 @@ export class ProductModalComponent {
   productService = inject(ProductService);
   productDetail = signal<ProductDetailInterface | undefined>(undefined);
   ngOnInit() {
+    console.log(this.productId);
     this.productService.getOneProduct(this.productId).subscribe({
-      next: (data) => this.productDetail.set(data),
+      next: (data) => console.log(data),
       error: (err) => console.log(err),
       complete: () => console.log('successfully fetched the data'),
     });

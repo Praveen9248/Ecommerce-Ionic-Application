@@ -11,13 +11,17 @@ import { ProductService } from '../../services/product-service';
 export class ProductModalComponent {
   @Input({ required: true }) productId!: number;
   productService = inject(ProductService);
-  productDetail = signal<ProductDetailInterface | undefined>(undefined);
+  productDetail = signal<ProductDetailInterface | null>(null);
   ngOnInit() {
     console.log(this.productId);
     this.productService.getOneProduct(this.productId).subscribe({
-      next: (data) => console.log(data),
+      next: (data) => this.productDetail.set(data),
       error: (err) => console.log(err),
       complete: () => console.log('successfully fetched the data'),
     });
+  }
+
+  handleCartClick() {
+    console.log('Add to Cart Clicked!!!');
   }
 }

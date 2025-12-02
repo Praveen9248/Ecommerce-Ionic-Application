@@ -37,9 +37,11 @@
           >
         </ion-toolbar>
       </ion-header>
-      <app-product-modal
-        [productId]="currentProductModalId()"
-      ></app-product-modal>
+      <ion-content>
+        <app-product-modal
+          [productId]="currentProductModalId()"
+        ></app-product-modal>
+      </ion-content>
     </ng-template>
   </ion-modal>
 </ion-content>

@@ -1,13 +1,88 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>about</ion-title>
+    <ion-title>About Us</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">about</ion-title>
+      <ion-title size="large">About Us</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-content>
+    <ion-item>
+      <ion-avatar class="ion-margin-horizontal">
+        <img src="../../../assets/icon/favicon.png" alt="logo" />
+      </ion-avatar>
+      <ion-label
+        >Tumio Store
+        <ion-text><p>Powered by Ionic + Angular</p></ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Company Information</ion-card-title>
+        <ion-card-subtitle>A detailed info</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-accordion-group
+          [multiple]="true"
+          [value]="['company','technologies','skills']"
+        >
+          <ion-accordion value="company">
+            <ion-item slot="header" color="light">
+              <ion-label>About Company</ion-label>
+            </ion-item>
+            <ion-item slot="content">
+              <ion-label
+                >Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Itaque nostrum non animi fugiat dolores sit in perspiciatis quod
+                necessitatibus et, incidunt modi ad aut qui quia, earum quaerat
+                tempore veritatis ab est, error ipsum recusandae repudiandae
+                quis! Tenetur nesciunt, amet dolor nemo architecto voluptate
+                eligendi suscipit animi debitis, iusto fugit.</ion-label
+              >
+            </ion-item>
+          </ion-accordion>
+          <ion-accordion value="application">
+            <ion-item slot="header" color="light">
+              <ion-label>About Application</ion-label>
+            </ion-item>
+            <ion-item slot="content">
+              <ion-label
+                >Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Perferendis, facere.</ion-label
+              >
+            </ion-item>
+          </ion-accordion>
+          <ion-accordion value="technologies">
+            <ion-item slot="header" color="light">
+              <ion-label>Technologies Used</ion-label>
+            </ion-item>
+            <ion-item slot="content">
+              <ion-label>
+                <ion-chip color="primary">Angular</ion-chip>
+                <ion-chip color="success">Ionic Framework</ion-chip>
+                <ion-chip color="tertiary">TypeScript</ion-chip>
+              </ion-label>
+            </ion-item>
+          </ion-accordion>
+          <ion-accordion value="skills">
+            <ion-item slot="header" color="light">
+              <ion-label>Skills History</ion-label>
+            </ion-item>
+            <ion-item slot="content">
+              <ion-label>Ionic Framework</ion-label>
+              <ion-progress-bar value="0.6" color="danger"></ion-progress-bar>
+            </ion-item>
+            <ion-item slot="content">
+              <ion-label>Angular Framework</ion-label>
+              <ion-progress-bar value="0.8" color="tertiary"></ion-progress-bar>
+            </ion-item>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
 </ion-content>

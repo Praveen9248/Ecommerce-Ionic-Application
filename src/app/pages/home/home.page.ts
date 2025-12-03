@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RefresherCustomEvent } from '@ionic/angular';
+import { IonicSlides, RefresherCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',

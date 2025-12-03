@@ -9,7 +9,6 @@ import { ProductInterface } from '../../interfaces/product-interface';
 })
 export class ProductCardComponent {
   @Input({ required: true }) productData!: ProductInterface;
-
   handleCart(event: Event) {
     event.stopPropagation();
     console.log('click the cart');

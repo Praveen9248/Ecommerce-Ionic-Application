@@ -14,7 +14,7 @@ export class ContactPage {
   contactForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
-    mobile: ['', Validators.required],
+    mobile: ['', [Validators.required, Validators.minLength(10)]],
     message: ['', Validators.required],
     contactMethod: ['', Validators.required],
   });

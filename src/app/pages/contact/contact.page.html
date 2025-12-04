@@ -15,6 +15,57 @@
       <ion-row>
         <ion-col size="12" sizeMd="6">
           <ion-card>
+            <ion-card-header>
+              <ion-card-title>Query Requests</ion-card-title>
+              <ion-card-subtitle>Support service form</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmitForm()">
+                <ion-label> Name </ion-label>
+                <ion-input color="primary" formControlName="name"> </ion-input>
+                <ion-label> Email </ion-label>
+                <ion-input type="email" color="primary" formControlName="email">
+                </ion-input>
+                <ion-label> Mobile </ion-label>
+                <ion-input
+                  type="number"
+                  color="primary"
+                  formControlName="mobile"
+                >
+                </ion-input>
+                <ion-label> Message </ion-label>
+                <ion-textarea color="primary" formControlName="message">
+                </ion-textarea>
+                <ion-label> Preferred Contact Method </ion-label>
+                <ion-radio-group value="mobile" formControlName="contactMethod">
+                  <ion-item>
+                    <ion-radio value="mobile">mobile</ion-radio>
+                  </ion-item>
+                  <ion-item>
+                    <ion-radio value="email">Email</ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+                <ion-button
+                  type="submit"
+                  expand="block"
+                  class="ion-margin"
+                  id="present-alert"
+                >
+                  Send
+                </ion-button>
+              </form>
+              <ion-alert
+                trigger="present-alert"
+                header="Message Sent Successfull"
+                subHeader="Your Request Message"
+                [message]="messageData()"
+                [buttons]="alertButtons"
+              ></ion-alert>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col size="12" sizeMd="6">
+          <ion-card>
             <ion-card-header class="ion-text-center">
               <ion-card-title>Contact Us</ion-card-title>
               <ion-card-subtitle>Way to reach out to us</ion-card-subtitle>
@@ -85,57 +136,6 @@
                   ></ion-label>
                 </ion-item>
               </ion-list>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-        <ion-col size="12" sizeMd="6">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>Query Requests</ion-card-title>
-              <ion-card-subtitle>Support service form</ion-card-subtitle>
-            </ion-card-header>
-            <ion-card-content>
-              <form [formGroup]="contactForm" (ngSubmit)="onSubmitForm()">
-                <ion-label> Name </ion-label>
-                <ion-input color="primary" formControlName="name"> </ion-input>
-                <ion-label> Email </ion-label>
-                <ion-input type="email" color="primary" formControlName="email">
-                </ion-input>
-                <ion-label> Mobile </ion-label>
-                <ion-input
-                  type="number"
-                  color="primary"
-                  formControlName="mobile"
-                >
-                </ion-input>
-                <ion-label> Message </ion-label>
-                <ion-textarea color="primary" formControlName="message">
-                </ion-textarea>
-                <ion-label> Preferred Contact Method </ion-label>
-                <ion-radio-group value="mobile" formControlName="contactMethod">
-                  <ion-item>
-                    <ion-radio value="mobile">mobile</ion-radio>
-                  </ion-item>
-                  <ion-item>
-                    <ion-radio value="email">Email</ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-                <ion-button
-                  type="submit"
-                  expand="block"
-                  class="ion-margin"
-                  id="present-alert"
-                >
-                  Send
-                </ion-button>
-              </form>
-              <ion-alert
-                trigger="present-alert"
-                header="Message Sent Successfull"
-                subHeader="Your Request Message"
-                [message]="messageData()"
-                [buttons]="alertButtons"
-              ></ion-alert>
             </ion-card-content>
           </ion-card>
         </ion-col>

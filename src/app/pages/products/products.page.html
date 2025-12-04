@@ -27,9 +27,15 @@
   </ion-refresher>
 
   <ion-segment value="all" (ionChange)="filter($event)">
-    <ion-segment-button value="all">All</ion-segment-button>
-    <ion-segment-button value="men's clothing">Mens</ion-segment-button>
-    <ion-segment-button value="women's clothing">Womens</ion-segment-button>
+    <ion-segment-button value="all" (click)="showLoading()"
+      >All</ion-segment-button
+    >
+    <ion-segment-button value="men's clothing" (click)="showLoading()"
+      >Mens</ion-segment-button
+    >
+    <ion-segment-button value="women's clothing" (click)="showLoading()"
+      >Womens</ion-segment-button
+    >
   </ion-segment>
 
   <ion-grid>

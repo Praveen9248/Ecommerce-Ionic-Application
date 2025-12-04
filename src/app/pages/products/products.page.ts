@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { ProductService } from './services/product-service';
 import { ProductInterface } from './interfaces/product-interface';
-import { RefresherCustomEvent } from '@ionic/angular';
+import { LoadingController, RefresherCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-products',
@@ -15,6 +15,7 @@ export class ProductsPage {
   filteredProducts = signal<ProductInterface[]>([]);
   isModalOpen = signal<boolean>(false);
   currentProductModalId = signal<number>(0);
+  loadingCtrl = inject(LoadingController);
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe({
@@ -34,17 +35,29 @@ export class ProductsPage {
   }
 
   filter(event: CustomEvent) {
-    if (event.detail.value === 'all') {
-      this.filteredProducts.set(this.products());
-    } else if (event.detail.value === "men's clothing") {
-      this.filteredProducts.set(
-        this.products().filter((prod) => prod.category === "men's clothing")
-      );
-    } else {
-      this.filteredProducts.set(
-        this.products().filter((prod) => prod.category === "women's clothing")
-      );
-    }
+    setTimeout(() => {
+      if (event.detail.value === 'all') {
+        this.filteredProducts.set(this.products());
+      } else if (event.detail.value === "men's clothing") {
+        this.filteredProducts.set(
+          this.products().filter((prod) => prod.category === "men's clothing")
+        );
+      } else {
+        this.filteredProducts.set(
+          this.products().filter((prod) => prod.category === "women's clothing")
+        );
+      }
+    }, 2000);
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading',
+      duration: 2000,
+      animated: true,
+    });
+
+    loading.present();
   }
 
   handleSearch(event: CustomEvent) {
